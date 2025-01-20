@@ -62,15 +62,22 @@ export default function Menu(): ReactElement {
       </Link>
 
       <ul className={styles.navigation}>
-        {siteContent?.menu.map((item: MenuItem) => (
-          <li key={item.name}>
-            {item?.subItems ? (
-              <MenuDropdown label={item.name} items={item.subItems} />
-            ) : (
-              <MenuLink {...item} />
-            )}
-          </li>
-        ))}
+        {siteContent?.menu.map((item: MenuItem) => {
+          if (
+            item.link?.toLowerCase() === '/faucet' &&
+            appConfig.faucet.enabled !== 'true'
+          )
+            return false
+          return (
+            <li key={item.name}>
+              {item?.subItems ? (
+                <MenuDropdown label={item.name} items={item.subItems} />
+              ) : (
+                <MenuLink {...item} />
+              )}
+            </li>
+          )
+        })}
       </ul>
 
       <div className={styles.actions}>
