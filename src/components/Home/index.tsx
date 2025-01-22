@@ -11,6 +11,7 @@ import HomeContent from './Content'
 import Ecosystem from './Ecosystem'
 import OnboardingSection from '../@shared/Onboarding'
 import Container from '../@shared/atoms/Container'
+import Partners from '@components/@shared/Partners'
 
 interface FeaturedSection {
   title: string
@@ -87,6 +88,7 @@ export default function HomePage(): ReactElement {
           <OnboardingSection />
         </Container>
       )}
+      <Partners />
       <TopSales title="Publishers With Most Sales" />
       <HomeContent />
       {hasFeaturedAssets() && (
