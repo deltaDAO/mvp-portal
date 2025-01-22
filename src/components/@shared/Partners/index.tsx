@@ -16,11 +16,6 @@ export default function Partners({
     .keys()
     .filter((e) => e.startsWith('./'))
     .map((x) => x.replace('./', ''))
-  const extra = require
-    .context('../../../../public/images/extra-logos', false, /\.(png|jpe?g)$/)
-    .keys()
-    .filter((e) => e.startsWith('./'))
-    .map((x) => x.replace('./', ''))
 
   return (
     <>
@@ -36,14 +31,6 @@ export default function Partners({
             <img src={`/images/partners/${logo}`} />
           </div>
         ))}
-        {extended &&
-          extra?.map((logo) => (
-            <img
-              key={logo}
-              className={styles.logo}
-              src={`/images/extra-logos/${logo}`}
-            />
-          ))}
       </div>
     </>
   )
