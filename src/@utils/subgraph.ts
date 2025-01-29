@@ -65,6 +65,11 @@ export const tokenAddressesEUROe = {
   80001: '0xA089a21902914C3f3325dBE2334E9B466071E5f1'
 }
 
+// Pontus-X Logging Token
+export const tokenAddressesLOG = {
+  23294: '0x431aE822B6D59cc96dA181dB632396f58932dA9d'
+}
+
 export function getSubgraphUri(chainId: number): string {
   const config = getOceanConfig(chainId)
   return config.subgraphUri
@@ -176,11 +181,15 @@ export async function getOpcsApprovedTokens(
 
   try {
     const response = await fetchData(OpcsApprovedTokensQuery, null, context)
+
     if (!response?.data) return
 
     // TODO: remove the mocked EUROe integration
     const { approvedTokens } = response.data.opcs[0]
-    if (!Object.keys(tokenAddressesEUROe).includes(chainId.toString()))
+    if (
+      !Object.keys(tokenAddressesEUROe).includes(chainId.toString()) &&
+      !Object.keys(tokenAddressesLOG).includes(chainId.toString())
+    )
       return approvedTokens
 
     const oceanTokenAddress = chains.find(
@@ -192,7 +201,12 @@ export async function getOpcsApprovedTokens(
         ethers.utils.getAddress(oceanTokenAddress)
     )
 
-    return approvedTokensWithoutOcean.includes(
+    LoggerInstance.log('[getOpcsApprovedTokens]', {
+      oceanTokenAddress,
+      approvedTokensWithoutOcean
+    })
+
+    const approvedTokensWithEUROe = approvedTokensWithoutOcean.includes(
       (token) =>
         ethers.utils.getAddress(token.address) ===
         ethers.utils.getAddress(tokenAddressesEUROe[chainId])
@@ -208,6 +222,32 @@ export async function getOpcsApprovedTokens(
             symbol: 'EUROe'
           }
         ]
+
+    LoggerInstance.log('[getOpcsApprovedTokens]', {
+      approvedTokensWithEUROe
+    })
+
+    const approvedTokensWithEUROeAndLOG = approvedTokensWithEUROe.includes(
+      (token) =>
+        ethers.utils.getAddress(token.address) ===
+        ethers.utils.getAddress(tokenAddressesLOG[chainId])
+    )
+      ? approvedTokensWithEUROe
+      : [
+          ...approvedTokensWithEUROe,
+          {
+            address: tokenAddressesLOG[chainId],
+            decimals: 18,
+            name: 'Pontus-X Logging Token',
+            symbol: 'PXLOG'
+          }
+        ]
+
+    LoggerInstance.log('[getOpcsApprovedTokens]', {
+      approvedTokensWithEUROeAndLOG
+    })
+
+    return approvedTokensWithEUROeAndLOG
   } catch (error) {
     LoggerInstance.error('Error getOpcsApprovedTokens: ', error.message)
     throw Error(error.message)
