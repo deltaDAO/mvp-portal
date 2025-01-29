@@ -1,9 +1,9 @@
+import AddNetwork from '@components/@shared/AddNetwork'
+import { getSupportedChainIds } from 'chains.config'
 import { ReactElement } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
-import styles from './Details.module.css'
 import AddTokenList from './AddTokenList'
-import { getCustomChainIds } from 'chains.config'
-import AddNetwork from '@components/@shared/AddNetwork'
+import styles from './Details.module.css'
 
 export default function Details(): ReactElement {
   const { connector: activeConnector } = useAccount()
@@ -21,7 +21,7 @@ export default function Details(): ReactElement {
           <div title="Networks">Networks</div>
           {networksListToDisplay?.length > 0 &&
             networksListToDisplay.map((chain) => {
-              if (!getCustomChainIds().includes(chain.id)) return false
+              if (!getSupportedChainIds().includes(chain.id)) return false
               return (
                 <AddNetwork
                   key={`add-network-button-${chain.id}`}
