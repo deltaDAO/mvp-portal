@@ -3,6 +3,28 @@
 
 const networksMetadata = [
   {
+    chainId: 23294,
+    networkId: 23294,
+    name: 'Oasis Sapphire',
+    chain: 'Oasis Sapphire',
+    rpc: ['https://1rpc.io/oasis/sapphire'],
+    faucets: [],
+    nativeCurrency: {
+      name: 'ROSE',
+      symbol: 'ROSE',
+      decimals: 18
+    },
+    infoURL: 'https://oasisprotocol.org/sapphire',
+    shortName: 'Sapphire',
+    explorers: [
+      {
+        name: 'Oasis Explorer',
+        url: 'https://explorer.oasis.io/mainnet/sapphire',
+        standard: ''
+      }
+    ]
+  },
+  {
     chainId: 32456,
     networkId: 32456,
     name: 'Pontus-X Devnet',
