@@ -99,7 +99,7 @@ export const initialValues: FormPublishData = {
       dataTokenOptions: { name: '', symbol: '' },
       access: 'access',
       providerUrl: {
-        url: 'https://provider.test.pontus-x.eu',
+        url: customProviderUrl,
         valid: true,
         custom: false
       },
