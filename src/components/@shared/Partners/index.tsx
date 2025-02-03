@@ -5,7 +5,6 @@ import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
 export default function Partners({
-  extended,
   className
 }: {
   extended?: boolean
@@ -27,9 +26,11 @@ export default function Partners({
         })}
       >
         {partners?.map((logo) => (
-          <div key={logo} className={styles.logo}>
-            <img src={`/images/partners/${logo}`} />
-          </div>
+          <img
+            className={styles.logo}
+            key={logo}
+            src={`/images/partners/${logo}`}
+          />
         ))}
       </div>
     </>
