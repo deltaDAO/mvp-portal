@@ -22,10 +22,6 @@
   text-align: center;
 }
 
-.logo:last-child {
-  grid-column: 1/1;
-}
-
 @media (min-width: 25rem) {
   .logo {
     grid-column: unset;
