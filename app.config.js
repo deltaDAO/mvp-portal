@@ -11,7 +11,8 @@ module.exports = {
   // const { appConfig } = useMarketMetadata()
   // return appConfig.metadataCacheUri
   metadataCacheUri:
-    process.env.NEXT_PUBLIC_METADATACACHE_URI || 'https://aquarius.pontus-x.eu',
+    process.env.NEXT_PUBLIC_METADATACACHE_URI ||
+    'https://aquarius.main.pontus-x.eu',
 
   complianceUri:
     process.env.NEXT_PUBLIC_COMPLIANCE_URI ||
@@ -28,7 +29,7 @@ module.exports = {
   chainIdsSupported: getSupportedChainIds(),
 
   customProviderUrl:
-    process.env.NEXT_PUBLIC_PROVIDER_URL || 'https://provider.test.pontus-x.eu',
+    process.env.NEXT_PUBLIC_PROVIDER_URL || 'https://provider.main.pontus-x.eu',
 
   infuraProjectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID || 'xxx',
 
