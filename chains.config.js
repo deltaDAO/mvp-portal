@@ -5,13 +5,25 @@ const chains = [
   {
     chainId: 23294,
     isDefault: true,
-    isCustom: false,
+    isCustom: true,
+    network: 'Sapphire Mainnet',
+    oceanTokenSymbol: 'PTX',
+    oceanTokenAddress: '0x431aE822B6D59cc96dA181dB632396f58932dA9d',
+    nftFactoryAddress: '0x80E63f73cAc60c1662f27D2DFd2EA834acddBaa8',
+    fixedRateExchangeAddress: '0xf26c6C93f9f1d725e149d95f8E7B2334a406aD10',
+    dispenserAddress: '0x2112Eb973af1DBf83a4f11eda82f7a7527D7Fde5',
+    opfCommunityFeeCollector: '0x06100AB868206861a4D7936166A91668c2Ce1312',
+    startBlock: 905232,
+    transactionBlockTimeout: 50,
+    transactionConfirmationBlocks: 1,
+    transactionPollingTimeout: 750,
+    gasFeeMultiplier: 1.1,
     providerUri: 'https://provider.main.pontus-x.eu',
-    providerAddress: '0xafcB6FA36869AFE260Ab5f6a687A756461452118',
+    providerAddress: '0x9546d39CE3E48BC942f0be4AA9652cBe0Aff3592',
     metadataCacheUri: 'https://aquarius.main.pontus-x.eu',
-    nodeUri: 'https://1rpc.io/oasis/sapphire',
+    nodeUri: 'https://rpc.main.pontus-x.eu/0953a56072a9a7ca46f57498453d2b3d',
     subgraphUri: 'https://subgraph.main.pontus-x.eu',
-    explorerUri: 'https://explorer.oasis.io/mainnet/sapphire'
+    explorerUri: 'https://explorer.pontus-x.eu/testnet/pontusx'
   }
 ]
 

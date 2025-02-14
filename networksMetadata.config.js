@@ -5,21 +5,21 @@ const networksMetadata = [
   {
     chainId: 23294,
     networkId: 23294,
-    name: 'Oasis Sapphire',
-    chain: 'Oasis Sapphire',
-    rpc: ['https://1rpc.io/oasis/sapphire'],
+    name: 'Oasis Sapphire Mainnet',
+    chain: 'Oasis Sapphire Mainnet',
+    rpc: ['https://rpc.main.pontus-x.eu/0953a56072a9a7ca46f57498453d2b3d'],
     faucets: [],
     nativeCurrency: {
       name: 'ROSE',
       symbol: 'ROSE',
       decimals: 18
     },
-    infoURL: 'https://oasisprotocol.org/sapphire',
-    shortName: 'Sapphire',
+    infoURL: 'https://docs.pontus-x.eu',
+    shortName: 'Pontus-X',
     explorers: [
       {
-        name: 'Oasis Explorer',
-        url: 'https://explorer.oasis.io/mainnet/sapphire',
+        name: 'Pontus-X Testnet Explorer',
+        url: 'https://explorer.pontus-x.eu/testnet/pontusx',
         standard: ''
       }
     ]
