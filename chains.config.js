@@ -8,7 +8,7 @@ const chains = [
     isCustom: true,
     network: 'Sapphire Mainnet',
     oceanTokenSymbol: 'PTX',
-    oceanTokenAddress: '0x431aE822B6D59cc96dA181dB632396f58932dA9d',
+    oceanTokenAddress: '0x39d22b78a7651a76ffbde2aaab5fd92666aca520',
     nftFactoryAddress: '0x80E63f73cAc60c1662f27D2DFd2EA834acddBaa8',
     fixedRateExchangeAddress: '0xf26c6C93f9f1d725e149d95f8E7B2334a406aD10',
     dispenserAddress: '0x2112Eb973af1DBf83a4f11eda82f7a7527D7Fde5',
