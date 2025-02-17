@@ -1,36 +1,47 @@
 import AddNetwork from '@components/@shared/AddNetwork'
 import { getSupportedChainIds } from 'chains.config'
-import { ReactElement } from 'react'
+import { ReactElement, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
+import { useMarketMetadata } from '../../../@context/MarketMetadata'
+import {
+  getNetworkDataById,
+  getNetworkDisplayName
+} from '../../../@hooks/useNetworkMetadata'
 import AddTokenList from './AddTokenList'
 import styles from './Details.module.css'
+import networkdata from '../../../../content/networks-metadata.json'
 
 export default function Details(): ReactElement {
   const { connector: activeConnector } = useAccount()
 
-  const { chains, chain: activeChain } = useNetwork()
+  const { chain: activeChain } = useNetwork()
+  const { appConfig } = useMarketMetadata()
 
-  const networksListToDisplay = chains.filter(
-    (chain) => chain.id !== activeChain?.id
-  )
+  const networksListToDisplay = useMemo(() => {
+    return appConfig.chainIdsSupported.filter(
+      (chainId) => chainId !== activeChain?.id
+    )
+  }, [activeChain])
 
   return (
     <div className={styles.details}>
       <ul>
-        <li className={styles.networks}>
-          <div title="Networks">Networks</div>
-          {networksListToDisplay?.length > 0 &&
-            networksListToDisplay.map((chain) => {
-              if (!getSupportedChainIds().includes(chain.id)) return false
+        {networksListToDisplay?.length > 0 && (
+          <li className={styles.networks}>
+            <div title="Networks">Networks</div>
+            {networksListToDisplay.map((chainId) => {
               return (
                 <AddNetwork
-                  key={`add-network-button-${chain.id}`}
-                  chainId={chain.id}
-                  networkName={chain.name}
+                  key={`add-network-button-${chainId}`}
+                  chainId={chainId}
+                  networkName={getNetworkDisplayName(
+                    getNetworkDataById(networkdata, chainId)
+                  )}
                 />
               )
             })}
-        </li>
+          </li>
+        )}
         {activeConnector?.name === 'MetaMask' && (
           <li className={styles.tokens}>
             <div title="Tokens">Tokens</div>
