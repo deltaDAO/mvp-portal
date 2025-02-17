@@ -67,7 +67,8 @@ export const tokenAddressesEUROe = {
 
 // Pontus-X Logging Token
 export const tokenAddressesLOG = {
-  23294: '0x431aE822B6D59cc96dA181dB632396f58932dA9d'
+  23294: '0x431aE822B6D59cc96dA181dB632396f58932dA9d',
+  32457: '0x300Dad6baD13ab3d4d44Ac7102a4f25c14cc1e82'
 }
 
 export function getSubgraphUri(chainId: number): string {
@@ -195,7 +196,7 @@ export async function getOpcsApprovedTokens(
     const oceanTokenAddress = chains.find(
       (chain) => chain.chainId === chainId
     )?.oceanTokenAddress
-    const approvedTokensWithoutOcean = approvedTokens.filter(
+    const approvedTokensWithoutOcean = approvedTokens?.filter(
       (token) =>
         ethers.utils.getAddress(token.address) !==
         ethers.utils.getAddress(oceanTokenAddress)
@@ -239,7 +240,7 @@ export async function getOpcsApprovedTokens(
             address: tokenAddressesLOG[chainId],
             decimals: 18,
             name: 'Pontus-X Logging Token',
-            symbol: 'PXLOG'
+            symbol: 'PTX'
           }
         ]
 
