@@ -24,6 +24,29 @@ const chains = [
     nodeUri: 'https://rpc.main.pontus-x.eu/0953a56072a9a7ca46f57498453d2b3d',
     subgraphUri: 'https://subgraph.main.pontus-x.eu',
     explorerUri: 'https://explorer.pontus-x.eu/testnet/pontusx'
+  },
+  {
+    chainId: 32457,
+    isDefault: true,
+    isCustom: true,
+    network: 'pontusx-testnet',
+    oceanTokenSymbol: 'OCEAN',
+    oceanTokenAddress: '0x5B190F9E2E721f8c811E4d584383E3d57b865C69',
+    nftFactoryAddress: '0x2C4d542ff791890D9290Eec89C9348A4891A6Fd2',
+    fixedRateExchangeAddress: '0xcE0F39abB6DA2aE4d072DA78FA0A711cBB62764E',
+    dispenserAddress: '0xaB5B68F88Bc881CAA427007559E9bbF8818026dE',
+    opfCommunityFeeCollector: '0xACC8d1B2a0007951fb4ed622ACB1C4fcCAbe778D',
+    startBlock: 82191,
+    transactionBlockTimeout: 50,
+    transactionConfirmationBlocks: 1,
+    transactionPollingTimeout: 750,
+    gasFeeMultiplier: 1.1,
+    providerUri: 'https://provider.test.pontus-x.eu',
+    providerAddress: '0x9546d39CE3E48BC942f0be4AA9652cBe0Aff3592',
+    metadataCacheUri: 'https://aquarius.pontus-x.eu',
+    nodeUri: 'https://rpc.test.pontus-x.eu',
+    subgraphUri: 'https://subgraph.test.pontus-x.eu',
+    explorerUri: 'https://explorer.pontus-x.eu/testnet/pontusx'
   }
 ]
 
