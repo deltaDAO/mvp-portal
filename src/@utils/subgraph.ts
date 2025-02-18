@@ -213,7 +213,7 @@ export async function getOpcsApprovedTokens(
     const approvedTokensWithEUROe =
       tokenAddressesEUROe[chainId] === undefined
         ? approvedTokensWithoutOcean
-        : approvedTokensWithoutOcean.includes(
+        : approvedTokensWithoutOcean.some(
             (token) =>
               ethers.utils.getAddress(token.address) ===
               ethers.utils.getAddress(tokenAddressesEUROe[chainId])
@@ -237,7 +237,7 @@ export async function getOpcsApprovedTokens(
     const approvedTokensWithEUROeAndLOG =
       tokenAddressesLOG[chainId] === undefined
         ? approvedTokensWithEUROe
-        : approvedTokensWithEUROe.includes(
+        : approvedTokensWithEUROe.some(
             (token) =>
               ethers.utils.getAddress(token.address) ===
               ethers.utils.getAddress(tokenAddressesLOG[chainId])
