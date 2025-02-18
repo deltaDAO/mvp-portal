@@ -100,7 +100,7 @@ module.exports = {
 
   contractingProvider: {
     enable: true,
-    endpoint: 'https://contracting.demo.delta-dao.com'
+    endpoint: 'https://contracting.main.delta-dao.com'
   },
 
   networkAlertConfig: {
