@@ -11,7 +11,8 @@ module.exports = {
   // const { appConfig } = useMarketMetadata()
   // return appConfig.metadataCacheUri
   metadataCacheUri:
-    process.env.NEXT_PUBLIC_METADATACACHE_URI || 'https://aquarius.pontus-x.eu',
+    process.env.NEXT_PUBLIC_METADATACACHE_URI ||
+    'https://aquarius.main.pontus-x.eu',
 
   complianceUri:
     process.env.NEXT_PUBLIC_COMPLIANCE_URI ||
@@ -28,7 +29,7 @@ module.exports = {
   chainIdsSupported: getSupportedChainIds(),
 
   customProviderUrl:
-    process.env.NEXT_PUBLIC_PROVIDER_URL || 'https://provider.test.pontus-x.eu',
+    process.env.NEXT_PUBLIC_PROVIDER_URL || 'https://provider.main.pontus-x.eu',
 
   infuraProjectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID || 'xxx',
 
@@ -77,7 +78,7 @@ module.exports = {
     process.env.NEXT_PUBLIC_PRIVACY_PREFERENCE_CENTER || 'true',
 
   // Default terms to be used for service offerings made on this marketplace
-  defaultTermsAndConditionsUrl: 'https://portal.pontus-x.eu/privacy/en',
+  defaultTermsAndConditionsUrl: 'https://portal.main.pontus-x.eu/terms',
 
   // Purgatory URI, leave as an empty string to disable the API call
   purgatoryUrl: process.env.NEXT_PUBLIC_PURGATORY_URI || '',
@@ -99,7 +100,7 @@ module.exports = {
 
   contractingProvider: {
     enable: true,
-    endpoint: 'https://contracting.demo.delta-dao.com'
+    endpoint: 'https://contracting.main.delta-dao.com'
   },
 
   networkAlertConfig: {

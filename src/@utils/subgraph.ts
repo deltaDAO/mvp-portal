@@ -65,6 +65,12 @@ export const tokenAddressesEUROe = {
   80001: '0xA089a21902914C3f3325dBE2334E9B466071E5f1'
 }
 
+// Pontus-X Logging Token
+export const tokenAddressesLOG = {
+  23294: '0x431aE822B6D59cc96dA181dB632396f58932dA9d',
+  32457: '0x300Dad6baD13ab3d4d44Ac7102a4f25c14cc1e82'
+}
+
 export function getSubgraphUri(chainId: number): string {
   const config = getOceanConfig(chainId)
   return config.subgraphUri
@@ -176,38 +182,82 @@ export async function getOpcsApprovedTokens(
 
   try {
     const response = await fetchData(OpcsApprovedTokensQuery, null, context)
+
     if (!response?.data) return
 
+    LoggerInstance.log(`[getOpcsApprovedTokens] response: `, response.data)
+
     // TODO: remove the mocked EUROe integration
-    const { approvedTokens } = response.data.opcs[0]
-    if (!Object.keys(tokenAddressesEUROe).includes(chainId.toString()))
+    const { approvedTokens } = response.data.opcs[0] || []
+    if (
+      !Object.keys(tokenAddressesEUROe).includes(chainId.toString()) &&
+      !Object.keys(tokenAddressesLOG).includes(chainId.toString())
+    )
       return approvedTokens
 
     const oceanTokenAddress = chains.find(
       (chain) => chain.chainId === chainId
     )?.oceanTokenAddress
-    const approvedTokensWithoutOcean = approvedTokens.filter(
-      (token) =>
-        ethers.utils.getAddress(token.address) !==
-        ethers.utils.getAddress(oceanTokenAddress)
-    )
+    const approvedTokensWithoutOcean =
+      approvedTokens?.filter(
+        (token) =>
+          ethers.utils.getAddress(token.address) !==
+          ethers.utils.getAddress(oceanTokenAddress)
+      ) || []
 
-    return approvedTokensWithoutOcean.includes(
-      (token) =>
-        ethers.utils.getAddress(token.address) ===
-        ethers.utils.getAddress(tokenAddressesEUROe[chainId])
-    )
-      ? approvedTokensWithoutOcean
-      : [
-          ...approvedTokensWithoutOcean,
-          {
-            address: tokenAddressesEUROe[chainId],
-            // TODO: revert once decimals changed to 6 on pontus-x
-            decimals: chainId === 32456 ? 18 : 6,
-            name: 'EUROe',
-            symbol: 'EUROe'
-          }
-        ]
+    LoggerInstance.log('[getOpcsApprovedTokens]', {
+      oceanTokenAddress,
+      approvedTokensWithoutOcean
+    })
+
+    const approvedTokensWithEUROe =
+      tokenAddressesEUROe[chainId] === undefined
+        ? approvedTokensWithoutOcean
+        : approvedTokensWithoutOcean.some(
+            (token) =>
+              ethers.utils.getAddress(token.address) ===
+              ethers.utils.getAddress(tokenAddressesEUROe[chainId])
+          )
+        ? approvedTokensWithoutOcean
+        : [
+            ...approvedTokensWithoutOcean,
+            {
+              address: tokenAddressesEUROe[chainId],
+              // TODO: revert once decimals changed to 6 on pontus-x
+              decimals: chainId === 32456 ? 18 : 6,
+              name: 'EUROe',
+              symbol: 'EUROe'
+            }
+          ]
+
+    LoggerInstance.log('[getOpcsApprovedTokens]', {
+      approvedTokensWithEUROe
+    })
+
+    const approvedTokensWithEUROeAndLOG =
+      tokenAddressesLOG[chainId] === undefined
+        ? approvedTokensWithEUROe
+        : approvedTokensWithEUROe.some(
+            (token) =>
+              ethers.utils.getAddress(token.address) ===
+              ethers.utils.getAddress(tokenAddressesLOG[chainId])
+          )
+        ? approvedTokensWithEUROe
+        : [
+            ...approvedTokensWithEUROe,
+            {
+              address: tokenAddressesLOG[chainId],
+              decimals: 18,
+              name: 'Pontus-X Logging Token',
+              symbol: 'PTX'
+            }
+          ]
+
+    LoggerInstance.log('[getOpcsApprovedTokens]', {
+      approvedTokensWithEUROeAndLOG
+    })
+
+    return approvedTokensWithEUROeAndLOG
   } catch (error) {
     LoggerInstance.error('Error getOpcsApprovedTokens: ', error.message)
     throw Error(error.message)

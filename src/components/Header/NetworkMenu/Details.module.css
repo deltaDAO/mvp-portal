@@ -14,12 +14,15 @@
   justify-content: space-between;
 }
 
-.tokens {
-  margin-top: var(--sub-section-spacing);
-  margin-bottom: calc(var(--spacer) / 3);
-  padding-top: var(--sub-section-spacing);
-  border-top: var(--menu-mobile-navigation-border-size) solid
+.networks {
+  margin-bottom: var(--sub-section-spacing);
+  padding-bottom: var(--sub-section-spacing);
+  border-bottom: var(--menu-mobile-navigation-border-size) solid
     var(--menu-mobile-navigation-border-color);
+}
+
+.tokens {
+  margin-bottom: var(--sub-section-spacing);
 }
 
 .networks p,

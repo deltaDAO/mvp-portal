@@ -9,6 +9,10 @@ export const tokenLogos = {
     image: <EUROeLogo />,
     url: 'https://dev.euroe.com/img/EUROe_Symbol_Black.svg'
   },
+  PTX: {
+    image: <EUROeLogo />,
+    url: 'https://docs.pontus-x.eu'
+  },
   OCEAN: {
     image: <OceanLogo />,
     url: 'https://raw.githubusercontent.com/oceanprotocol/art/main/logo/token.png'
