@@ -43,7 +43,7 @@ const chains = [
     transactionPollingTimeout: 750,
     gasFeeMultiplier: 1.1,
     providerUri: 'https://provider.main.pontus-x.eu',
-    providerAddress: '0x9546d39CE3E48BC942f0be4AA9652cBe0Aff3592',
+    providerAddress: '0x566c1Bd445392Fd3bCd7D7D8D63dd0d8f3B14571',
     metadataCacheUri: 'https://aquarius.main.pontus-x.eu',
     nodeUri: 'https://rpc.main.pontus-x.eu/0953a56072a9a7ca46f57498453d2b3d',
     subgraphUri: 'https://subgraph.main.pontus-x.eu',
