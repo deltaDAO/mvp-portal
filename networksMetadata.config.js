@@ -18,8 +18,8 @@ const networksMetadata = [
     shortName: 'Pontus-X',
     explorers: [
       {
-        name: 'Pontus-X Testnet Explorer',
-        url: 'https://explorer.pontus-x.eu/testnet/pontusx',
+        name: 'Pontus-X Sapphire Explorer',
+        url: 'https://explorer.pontus-x.eu/mainnet/sapphire',
         standard: ''
       }
     ]
