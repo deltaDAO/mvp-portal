@@ -89,7 +89,6 @@ export default function HomePage(): ReactElement {
         </Container>
       )}
       <Partners />
-      <TopSales title="Publishers With Most Sales" />
       <HomeContent />
       {hasFeaturedAssets() && (
         <>
