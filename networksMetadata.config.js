@@ -23,7 +23,7 @@ const networksMetadata = [
         standard: ''
       }
     ]
-  },
+  } /* ,
   {
     chainId: 32456,
     networkId: 32456,
@@ -67,7 +67,7 @@ const networksMetadata = [
         standard: ''
       }
     ]
-  }
+  } */
 ]
 
 module.exports = {
